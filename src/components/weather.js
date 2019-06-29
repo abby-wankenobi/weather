@@ -1,12 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 export default class Weather extends React.Component {
 
   render() {
     return (
       <div>
-        SHoW mE THe WeAtHEr
+        <h1>{this.props.location.location}</h1>
       </div>
     )
   }
