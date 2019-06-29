@@ -10,5 +10,3 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
-var apiKey = "088b7bb74935e20b400b99cf2a05fd5f"
