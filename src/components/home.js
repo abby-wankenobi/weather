@@ -2,7 +2,7 @@ import React from 'react';
 
 import Search from './search.js';
 import Weather from './weather.js';
-import { apiCall } from './apiCall.js';
+import { apiCall, apiForecast } from './apiCall.js';
 
 
 export default class Home extends React.Component {
@@ -10,7 +10,10 @@ export default class Home extends React.Component {
   state = {
     location: "New York",
     data: {},
+    forecast: {},
     weather: {},
+    hourlyTemp: [],
+    hours: [],
   }
 
 
@@ -34,12 +37,13 @@ export default class Home extends React.Component {
       location = "zip=" + location
     }
     var input = apiCall(location, this.handleData)
+    var forecast = apiForecast(location, this.handleForecast)
   }
 
 
 
 
-  // Converts Temp to celsius and fahrenheit before value to state
+  // Converts Temp to celsius and fahrenheit before setting value to state
   tempConversion = (temp) => {
     var celsius = Math.round(temp - 273.15)
     var fahrenheit = Math.round((temp - 273.15) * 9/5 + 32)
@@ -68,7 +72,24 @@ export default class Home extends React.Component {
         city: arg.name,
       }
     })
-    console.log(arg)
+  }
+
+  handleForecast = (arg) => {
+
+    var temps = [];
+    var hour = [];
+
+    for (let i = 0; i <= 8; i++) {
+      temps.push(arg.list[i].main.temp)
+      hour.push(arg.list[i].dt_txt.split(" ")[1].split(":").slice(0,2).join(":"))
+    }
+
+    this.setState({
+      forecast: arg,
+      hours: hour,
+      hourlyTemp: temps,
+    })
+    console.log(this.state)
   }
 
 
@@ -129,7 +150,7 @@ export default class Home extends React.Component {
         </div>
 
         <div>
-          {!this.state.weather.temp ? <div className="enterCity">Please enter a city</div> : <Weather weather={this.state.weather} />}
+          {!this.state.weather.temp ? <div className="enterCity">Please enter a city</div> : <Weather weather={this.state.weather} hours={this.state.hours} hourlyTemp={this.state.hourlyTemp}/>}
         </div>
       </div>
     )

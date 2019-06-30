@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bootstrap, Grid, Row, Container, Col } from 'react-bootstrap';
 import FadeIn from 'react-fade-in';
+import BarGraph from './weatherGraph';
 
 import cloudy from '../images/icons/cloudy.png';
 import partlyCloudy from '../images/icons/partlycloudy.png';
@@ -16,7 +17,7 @@ export default class Weather extends React.Component {
 
 
   componentDidMount() {
-    console.log(this.props)
+    // console.log(this.props)
   }
 
   iconDisplay = () => {
@@ -56,6 +57,8 @@ export default class Weather extends React.Component {
             <span className="">Humitidy: {this.props.weather.humidity}</span><br/>
           </div>
         </div>
+
+        <BarGraph />
       </FadeIn>
 
 
