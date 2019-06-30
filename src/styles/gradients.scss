@@ -34,10 +34,67 @@
 	}
 }
 
-.App-header {
-  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+
+.sunny {
+	background: linear-gradient(-45deg, #f57242, #f5ad42, #f5ef42);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 10s ease infinite;
+	-moz-animation: Gradient 10s ease infinite;
+	animation: Gradient 10s ease infinite;
+}
+
+.rainCloud {
+	background: linear-gradient(-45deg, #40a2c7, #8bb5c4, #beced4, #678d99);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
 	animation: Gradient 15s ease infinite;
+}
+
+.clouds {
+	background: linear-gradient(-45deg, #dcf2fc, #99c0f7, #e1e2e3, #c9daf2);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+.clear {
+	background: linear-gradient(-45deg, #f0e98d, #caeffc, #82d1ed, #f5f1bc);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+.snow {
+	background: linear-gradient(-45deg, #d9edfc, #cfd9e3, #faf9f5);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+.partlyCloudy {
+	background: linear-gradient(-45deg, #f0e98d, #b6d7e3, #c9daf2, #dfe5ed, #f5f1bc);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+.stormCloud {
+	background: linear-gradient(-45deg, #2b2b2b, #131330, #585d76, #968ca9, #b0b5c3);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+.wind {
+	background: linear-gradient(-75deg,#c9daf2, #a5b9d6, #d0d3d6, #e6edf5);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 10s ease infinite;
+	-moz-animation: Gradient 10s ease infinite;
+	animation: Gradient 10s ease infinite;
 }

@@ -38,6 +38,7 @@ export default class Home extends React.Component {
 
 
 
+
   // Converts Temp to celsius and fahrenheit before value to state
   tempConversion = (temp) => {
     var celsius = Math.round(temp - 273.15)
@@ -54,9 +55,7 @@ export default class Home extends React.Component {
 
   // Sets data for chosen city information
   handleData = (arg) => {
-
     var humidity = <span>{arg.main.humidity}<sup className="sup">%</sup></span>
-
 
     this.setState({
       data: arg,
@@ -74,10 +73,31 @@ export default class Home extends React.Component {
 
 
 
+  handleGradient = () => {
+    var weather = this.state.weather.percipitation;
+    if(weather === "Clear") {
+      return "mainPage clear"
+    } else if(weather === "Clouds"){
+      return "mainPage clouds"
+    } else if (weather === "Snow") {
+      return "mainPage snow"
+    } else if (weather === "Rain" || weather === "Drizzle") {
+      return "mainPage rainCloud"
+    } else if (weather === "Thunderstorm") {
+      return "mainPage stormCloud"
+    } else if (weather === "Windy") {
+      return "mainPage wind"
+    } else if (weather ==="Partly cloudy"){
+      return "mainPage partlyCloudy"
+    }else {
+      return "mainPage sunny"
+    }
+  }
+
 
   render() {
     return (
-      <div className="mainPage">
+      <div className={this.handleGradient()} >
 
         <Search location={this.state.location}
                 handleChange={this.handleChange}
