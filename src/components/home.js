@@ -80,8 +80,13 @@ export default class Home extends React.Component {
     var hour = [];
 
     for (let i = 0; i <= 8; i++) {
-      temps.push(arg.list[i].main.temp)
-      hour.push(arg.list[i].dt_txt.split(" ")[1].split(":").slice(0,2).join(":"))
+      if (arg.list[i].main.temp) {
+        temps.push(arg.list[i].main.temp)
+        hour.push(arg.list[i].dt_txt.split(" ")[1].split(":").slice(0,2).join(":"))
+      }
+      else {
+        return <div>Hello</div>
+      }
     }
 
     this.setState({
