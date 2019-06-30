@@ -17,7 +17,7 @@ export default class Weather extends React.Component {
 
 
   componentDidMount() {
-    // console.log(this.props)
+    console.log(this.props)
   }
 
   iconDisplay = () => {
@@ -58,7 +58,7 @@ export default class Weather extends React.Component {
           </div>
         </div>
 
-        <BarGraph />
+        <BarGraph hours={this.props.hours} hourlyTemp={this.props.hourlyTemp}/>
       </FadeIn>
 
 
