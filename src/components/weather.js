@@ -36,7 +36,9 @@ export default class Weather extends React.Component {
       return wind
     } else if (weather ==="partly cloudy"){
       return partlyCloudy
-    }else {
+    }else if (weather === "mist"){
+      return wind
+    } else {
       return sunny
     }
   }

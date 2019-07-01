@@ -20,6 +20,7 @@
 
 
 .weatherSubmit {
+  outline: none;
   text-transform: uppercase;
   font-family: 'Quicksand', sans-serif;
   background-color: transparent;
@@ -32,6 +33,7 @@
 
   &:hover {
     cursor: pointer;
+    box-shadow: 3px 3px 3px rgba(230, 227, 225, .35);
   }
 }
 

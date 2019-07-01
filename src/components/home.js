@@ -141,7 +141,9 @@ export default class Home extends React.Component {
       return "mainPage wind"
     } else if (weather ==="Partly cloudy"){
       return "mainPage partlyCloudy"
-    }else {
+    }else if (weather === "Mist"){
+      return "mainPage mist"
+    } else {
       return "mainPage sunny"
     }
   }

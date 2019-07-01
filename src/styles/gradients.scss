@@ -44,7 +44,7 @@
 }
 
 .rainCloud {
-	background: linear-gradient(-45deg, #40a2c7, #8bb5c4, #beced4, #678d99);
+	background: linear-gradient(-45deg, #4797b5, #7da8b8, #a2b5bd, #678d99);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
@@ -52,7 +52,7 @@
 }
 
 .clouds {
-	background: linear-gradient(-45deg, #dcf2fc, #99c0f7, #e1e2e3, #c9daf2);
+	background: linear-gradient(-45deg, #b0dff5, #80a8e0, #bac6d1, #c9daf2);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
@@ -60,7 +60,8 @@
 }
 
 .clear {
-	background: linear-gradient(-45deg, #f0e98d, #caeffc, #82d1ed, #f5f1bc);
+	background: linear-gradient(-45deg, #faf289,#a3e1f7, #4fcbf7, #f7ec4f );
+	// background: linear-gradient(-45deg, #f0e98d, #caeffc, #82d1ed, #f5f1bc);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
@@ -93,6 +94,14 @@
 
 .wind {
 	background: linear-gradient(-75deg,#c9daf2, #a5b9d6, #d0d3d6, #e6edf5);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 10s ease infinite;
+	-moz-animation: Gradient 10s ease infinite;
+	animation: Gradient 10s ease infinite;
+}
+
+.mist {
+	background: linear-gradient(-45deg, #28856c, #7db8a4, #a2b5bd, #84c4bb);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 10s ease infinite;
 	-moz-animation: Gradient 10s ease infinite;
