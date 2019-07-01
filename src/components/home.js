@@ -83,7 +83,9 @@ export default class Home extends React.Component {
       })
     } else {
       this.setState({
-        exists: false
+        exists: false,
+        data: {},
+        weather: {},
       })
     }
 
@@ -100,13 +102,8 @@ export default class Home extends React.Component {
       var hour = [];
 
       for (let i = 0; i <= 8; i++) {
-        if (arg.list[i].main.temp) {
-          temps.push(arg.list[i].main.temp)
-          hour.push(arg.list[i].dt_txt.split(" ")[1].split(":").slice(0,2).join(":"))
-        }
-        else {
-          return <div>Hello</div>
-        }
+        temps.push(arg.list[i].main.temp)
+        hour.push(arg.list[i].dt_txt.split(" ")[1].split(":").slice(0,2).join(":"))
       }
 
       this.setState({
@@ -117,6 +114,9 @@ export default class Home extends React.Component {
     } else {
       this.setState ({
         exists: false,
+        forecast: {},
+        hours: [],
+        hourlyTemp: [],
       })
     }
 
@@ -171,12 +171,10 @@ export default class Home extends React.Component {
 
 
   handleError = () => {
-    if (!this.state.exists) {
-      return (<div className="enterCity">Sorry! We couldn't find that place. Please enter another city name or state...</div>)
-    } else if (!this.state.weather.temp && this.state.exists) {
-      return (<div className="enterCity">Please enter a city</div>)
-    } else if (this.state.weather.temp && this.state.exists) {
-      return (<Weather weather={this.state.weather} hours={this.state.hours} hourlyTemp={this.state.hourlyTemp}/>)
+    if (!this.state.weather.temp && this.state.exists) {
+      return <div className="enterCity">Please enter a city</div>
+    } else if (!this.state.weather.temp && !this.state.exists) {
+      return <div className="enterCity">Sorry! Seems like we can't find that place. Please enter another city or state.</div>
     }
   }
 
@@ -194,7 +192,10 @@ export default class Home extends React.Component {
           {this.getDateTime()}
         </div>
 
-        <div>{this.handleError()}</div>
+        <div>
+          {!this.state.weather.temp ? this.handleError() : <Weather weather={this.state.weather} hours={this.state.hours} hourlyTemp={this.state.hourlyTemp}/>}
+        </div>
+
       </div>
     )
   }
