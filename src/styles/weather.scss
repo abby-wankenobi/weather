@@ -3,6 +3,22 @@
   margin-top: 50px;
 }
 
+@media screen and (max-width: 670px) {
+  .todayWeather {
+    display: block !important;
+  }
+
+  .weatherInfo{
+    text-align: center !important;
+    margin-left: 0 !important;
+  }
+
+  .weatherIcon {
+    text-align: center !important;
+    display: none !important;
+  }
+}
+
 .weatherInfo {
   text-align: left;
   margin-left: 15px;

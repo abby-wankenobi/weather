@@ -44,28 +44,28 @@ class BarChart extends Component {
         <div className="graph">
           <ul class="chart">
             <li>
-              <span style={style0} title={this.props.hours[0]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[0])}<sup className="sup">&deg;</sup></span>
+              <span style={style0} className="mobileBar" title={this.props.hours[0]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[0])}<sup className="sup">&deg;</sup></span>
             </li>
             <li>
-              <span style={style1} title={this.props.hours[1]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[1])}<sup className="sup">&deg;</sup></span>
+              <span style={style1} className="mobileBar" title={this.props.hours[1]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[1])}<sup className="sup">&deg;</sup></span>
             </li>
             <li>
-              <span style={style2} title={this.props.hours[2]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[2])}<sup className="sup">&deg;</sup></span>
+              <span style={style2} className="mobileBar" title={this.props.hours[2]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[2])}<sup className="sup">&deg;</sup></span>
             </li>
             <li>
-              <span style={style3} title={this.props.hours[3]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[3])}<sup className="sup">&deg;</sup></span>
+              <span style={style3} className="mobileBar" title={this.props.hours[3]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[3])}<sup className="sup">&deg;</sup></span>
             </li>
             <li>
-              <span style={style4} title={this.props.hours[4]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[4])}<sup className="sup">&deg;</sup></span>
+              <span style={style4} className="mobileBar" title={this.props.hours[4]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[4])}<sup className="sup">&deg;</sup></span>
             </li>
             <li>
-              <span style={style5} title={this.props.hours[5]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[5])}<sup className="sup">&deg;</sup></span>
+              <span style={style5} className="mobileBar" title={this.props.hours[5]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[5])}<sup className="sup">&deg;</sup></span>
             </li>
             <li>
-              <span style={style6} title={this.props.hours[6]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[6])}<sup className="sup">&deg;</sup></span>
+              <span style={style6} className="mobileBar" title={this.props.hours[6]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[6])}<sup className="sup">&deg;</sup></span>
             </li>
             <li>
-              <span style={style7} title={this.props.hours[7]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[7])}<sup className="sup">&deg;</sup></span>
+              <span style={style7} className="mobileBar" title={this.props.hours[7]}></span><span className="degrees">{this.handleTemp(this.props.hourlyTemp[7])}<sup className="sup">&deg;</sup></span>
             </li>
           </ul>
         </div>
