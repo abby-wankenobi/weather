@@ -14,8 +14,15 @@ export default class Home extends React.Component {
     weather: {},
     hourlyTemp: [],
     hours: [],
+    exists: true,
   }
 
+  componentDidMount(){
+    this.setState({
+      exists: true,
+    })
+    console.log(this.state)
+  }
 
   handleChange = (e) =>{
     this.setState({
@@ -59,41 +66,60 @@ export default class Home extends React.Component {
 
   // Sets data for chosen city information
   handleData = (arg) => {
-    var humidity = <span>{arg.main.humidity}<sup className="sup">%</sup></span>
 
-    this.setState({
-      data: arg,
-      weather: {
-        temp: this.tempConversion(arg.main.temp),
-        minTemp: this.tempConversion(arg.main.temp_min),
-        maxTemp: this.tempConversion(arg.main.temp_max),
-        humidity: humidity,
-        percipitation: arg.weather[0].main,
-        city: arg.name,
-      }
-    })
-  }
+    if (arg.cod == 200) {
+      var humidity = <span>{arg.main.humidity}<sup className="sup">%</sup></span>
 
-  handleForecast = (arg) => {
-
-    var temps = [];
-    var hour = [];
-
-    for (let i = 0; i <= 8; i++) {
-      if (arg.list[i].main.temp) {
-        temps.push(arg.list[i].main.temp)
-        hour.push(arg.list[i].dt_txt.split(" ")[1].split(":").slice(0,2).join(":"))
-      }
-      else {
-        return <div>Hello</div>
-      }
+      this.setState({
+        data: arg,
+        weather: {
+          temp: this.tempConversion(arg.main.temp),
+          minTemp: this.tempConversion(arg.main.temp_min),
+          maxTemp: this.tempConversion(arg.main.temp_max),
+          humidity: humidity,
+          percipitation: arg.weather[0].main,
+          city: arg.name,
+        }
+      })
+    } else {
+      this.setState({
+        exists: false
+      })
     }
 
-    this.setState({
-      forecast: arg,
-      hours: hour,
-      hourlyTemp: temps,
-    })
+    console.log(arg, this.state)
+  }
+
+
+
+  // Sets data for hourly weather forecast for bar graph
+  handleForecast = (arg) => {
+
+    if(arg.cod == 200) {
+      var temps = [];
+      var hour = [];
+
+      for (let i = 0; i <= 8; i++) {
+        if (arg.list[i].main.temp) {
+          temps.push(arg.list[i].main.temp)
+          hour.push(arg.list[i].dt_txt.split(" ")[1].split(":").slice(0,2).join(":"))
+        }
+        else {
+          return <div>Hello</div>
+        }
+      }
+
+      this.setState({
+        forecast: arg,
+        hours: hour,
+        hourlyTemp: temps,
+      })
+    } else {
+      this.setState ({
+        exists: false,
+      })
+    }
+
     console.log(this.state)
   }
 
@@ -141,6 +167,18 @@ export default class Home extends React.Component {
   }
 
 
+
+  handleError = () => {
+    if (!this.state.exists) {
+      return (<div className="enterCity">Sorry! We couldn't find that place. Please enter another city name or state...</div>)
+    } else if (!this.state.weather.temp && this.state.exists) {
+      return (<div className="enterCity">Please enter a city</div>)
+    } else if (this.state.weather.temp && this.state.exists) {
+      return (<Weather weather={this.state.weather} hours={this.state.hours} hourlyTemp={this.state.hourlyTemp}/>)
+    }
+  }
+
+
   render() {
     return (
       <div className={this.handleGradient()} >
@@ -150,13 +188,11 @@ export default class Home extends React.Component {
                 handleSubmit={this.handleSubmit}
         />
 
-      <div className="date">
+        <div className="date">
           {this.getDateTime()}
         </div>
 
-        <div>
-          {!this.state.weather.temp ? <div className="enterCity">Please enter a city</div> : <Weather weather={this.state.weather} hours={this.state.hours} hourlyTemp={this.state.hourlyTemp}/>}
-        </div>
+        <div>{this.handleError()}</div>
       </div>
     )
   }
