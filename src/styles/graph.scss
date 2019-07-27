@@ -6,9 +6,18 @@
 }
 
 .graph {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
+}
 
+.backdrop {
+  width: 150px;
+  height: 80%;
+  background: white;
+  position: absolute;
+  border-radius: 10px;
+  bottom: 0;
+  z-index: 10;
 }
 
 
@@ -34,9 +43,10 @@
     color: white;
     margin:0 30%;
     display: block;
-    background: rgba(255,255,255, 0.42);;
     animation: draw 1s ease-in-out;
     padding-bottom: 5px;
+
+
 
     &:before{
       position:absolute;
@@ -50,16 +60,34 @@
 
   }
 
+  .noRain {
+    background: rgba(255,255,255, 0.42) !important;
+  }
+
+  .rain {
+    background: transparent !important;
+    background-image:
+      radial-gradient(rgba(255,255,255, 0.7) 25%, transparent 0),
+      radial-gradient(rgba(255,255,255, 0.7) 25%, transparent 0) !important;
+    background-size: 3px 3px !important;
+    background-position: 0 0, 15px 15px !important;
+  }
+
   .mobileBar {
     color: white;
   }
 
   @media screen and (max-width: 670px) {
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+
     span {
       margin: 0 25% !important;
       font-size: 12px !important;
-      background: rgba(255,255,255, 0.3) !important;
     }
+
     .mobileBar {
       color: transparent;
     }

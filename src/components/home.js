@@ -5,6 +5,8 @@ import Weather from './weather.js';
 import { apiCall, apiForecast } from './apiCall.js';
 
 
+
+
 export default class Home extends React.Component {
 
   state = {
@@ -14,7 +16,8 @@ export default class Home extends React.Component {
     weather: {},
     hourlyTemp: [],
     hours: [],
-    exists: true,
+    rain: [],
+    exists: true
   }
 
   componentDidMount(){
@@ -56,7 +59,7 @@ export default class Home extends React.Component {
     var fahrenheit = Math.round((temp - 273.15) * 9/5 + 32)
 
     return (
-      <span>{fahrenheit}<sup className="sup">&deg;F</sup> / {celsius}<sup className="sup">&deg;C</sup></span>
+      <span>{fahrenheit}<sup className="sup">&deg;F</sup> &nbsp; {celsius}<sup className="sup">&deg;C</sup></span>
     )
   }
 
@@ -100,16 +103,20 @@ export default class Home extends React.Component {
     if(arg.cod == 200) {
       var temps = [];
       var hour = [];
+      var rain = [];
 
       for (let i = 0; i <= 8; i++) {
         temps.push(arg.list[i].main.temp)
         hour.push(arg.list[i].dt_txt.split(" ")[1].split(":").slice(0,2).join(":"))
+        rain.push((arg.list[i].weather[0].main === "Rain" ? true : false))
       }
+
 
       this.setState({
         forecast: arg,
         hours: hour,
         hourlyTemp: temps,
+        rain: rain,
       })
     } else {
       this.setState ({
@@ -117,6 +124,7 @@ export default class Home extends React.Component {
         forecast: {},
         hours: [],
         hourlyTemp: [],
+        rain: [],
       })
     }
 
@@ -141,8 +149,10 @@ export default class Home extends React.Component {
       return "mainPage wind"
     } else if (weather ==="Partly cloudy"){
       return "mainPage partlyCloudy"
-    }else if (weather === "Mist"){
+    } else if (weather === "Mist"){
       return "mainPage mist"
+    } else if (weather ==="Haze"){
+      return "mainPage sunny"
     } else {
       return "mainPage sunny"
     }
@@ -179,7 +189,12 @@ export default class Home extends React.Component {
   }
 
 
+
+
+
   render() {
+
+
     return (
       <div className={this.handleGradient()} >
 
@@ -193,8 +208,9 @@ export default class Home extends React.Component {
         </div>
 
         <div>
-          {!this.state.weather.temp ? this.handleError() : <Weather weather={this.state.weather} hours={this.state.hours} hourlyTemp={this.state.hourlyTemp}/>}
+          {!this.state.weather.temp ? this.handleError() : <Weather weather={this.state.weather} hours={this.state.hours} hourlyTemp={this.state.hourlyTemp} rain={this.state.rain} />}
         </div>
+
 
       </div>
     )

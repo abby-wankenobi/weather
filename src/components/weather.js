@@ -1,7 +1,7 @@
 import React from 'react';
-import { Bootstrap, Grid, Row, Container, Col } from 'react-bootstrap';
 import FadeIn from 'react-fade-in';
-import BarGraph from './weatherGraph';
+import WeatherGraph from './weatherGraph';
+import { AreaChart } from 'react-charts-d3';
 
 import cloudy from '../images/icons/cloudy.png';
 import partlyCloudy from '../images/icons/partlycloudy.png';
@@ -14,11 +14,6 @@ import wind from '../images/icons/wind.png';
 
 
 export default class Weather extends React.Component {
-
-
-  componentDidMount() {
-    console.log(this.props)
-  }
 
   iconDisplay = () => {
     var weather = this.props.weather.percipitation.toLowerCase()
@@ -38,6 +33,8 @@ export default class Weather extends React.Component {
       return partlyCloudy
     }else if (weather === "mist"){
       return wind
+    } else if (weather === "haze"){
+      return partlyCloudy
     } else {
       return sunny
     }
@@ -45,6 +42,12 @@ export default class Weather extends React.Component {
 
 
   render() {
+
+    const areaData = [
+        { key: 'Temp', values: [ { x: 'A', y: 25 }, { x: 'B', y: 50}, { x: 'C', y: 12 }, { x: 'D', y: 81 }, { x: 'E', y: 25 }, { x: 'F', y: 35}, { x: 'G', y: 4 }, { x: 'H', y: 102 } ] },
+    ];
+
+    console.log(this.props)
     return (
       <FadeIn transitionDuration="850">
         <div className="todayWeather">
@@ -53,14 +56,15 @@ export default class Weather extends React.Component {
           <div className="weatherInfo">
             <span className="locationHeader">{this.props.weather.city}</span><br/>
             <span className="locationWeather">{this.props.weather.percipitation}</span><br/>
-            <span className="">Temperature: {this.props.weather.temp}</span><br/>
-            <span className="">Low: {this.props.weather.minTemp}</span><br/>
-            <span className="">High: {this.props.weather.maxTemp}</span><br/>
-            <span className="">Humitidy: {this.props.weather.humidity}</span><br/>
+            <span className="locationWeatherTemp">{this.props.weather.temp}</span><br/>
+            <span className="">Low: &nbsp;{this.props.weather.minTemp}</span><br/>
+            <span className="">High: &nbsp;{this.props.weather.maxTemp}</span><br/>
+            <span className="">Humitidy: &nbsp;{this.props.weather.humidity}</span><br/>
           </div>
         </div>
 
-        <BarGraph hours={this.props.hours} hourlyTemp={this.props.hourlyTemp}/>
+        <WeatherGraph rain={this.props.rain} hours={this.props.hours} hourlyTemp={this.props.hourlyTemp}/>
+
       </FadeIn>
 
 
