@@ -6,11 +6,13 @@ Built with React and utilizes the OpenWeather API.
 
 
 
-In the project directory, run:
+In the project directory, run to start:
 
 ### `npm start`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+
+To deploy: 
 
 ### `npm run build`
